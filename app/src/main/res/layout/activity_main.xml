@@ -45,6 +45,7 @@
         android:layout_width="260dp"
         android:layout_height="70dp"
         android:backgroundTint="#5B3C90"
+        android:onClick="launchGame"
         android:text="Spela"
         android:textColor="@android:color/white"
         android:textSize="20sp"

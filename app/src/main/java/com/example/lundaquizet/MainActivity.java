@@ -24,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void launchGame(View v) {
+        Intent i = new Intent(this, GameActivity.class);
+        startActivity(i);
+    }
     public void launchMeasure(View v) {
         Intent i = new Intent(this, MeasureActivity.class);
         startActivity(i);
