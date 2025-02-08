@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">LundaQuizet</string>
+    <string name="acceleration_value">%1$.2f m/s²</string>
 </resources>

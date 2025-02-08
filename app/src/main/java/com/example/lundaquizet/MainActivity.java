@@ -1,6 +1,9 @@
 package com.example.lundaquizet;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -20,4 +23,10 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+
+    public void launchMeasure(View v) {
+        Intent i = new Intent(this, MeasureActivity.class);
+        startActivity(i);
+    }
+
 }

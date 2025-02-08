@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="@id/guideline" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/playButton"
         android:layout_width="260dp"
         android:layout_height="70dp"
         android:backgroundTint="#5B3C90"
@@ -55,26 +55,27 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/button3"
+        app:layout_constraintTop_toBottomOf="@id/playButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/measureButton"
             android:layout_width="140dp"
             android:layout_height="60dp"
             android:layout_marginEnd="44dp"
             android:backgroundTint="#5B3C90"
+            android:onClick="launchMeasure"
             android:text="Mät"
             android:textColor="@android:color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/button"
+            app:layout_constraintEnd_toStartOf="@id/aboutButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/aboutButton"
             android:layout_width="140dp"
             android:layout_height="60dp"
             android:layout_marginStart="4dp"
@@ -83,7 +84,7 @@
             android:textColor="@android:color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/button4"
+            app:layout_constraintStart_toEndOf="@id/measureButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
