@@ -1,14 +1,20 @@
 package com.example.lundaquizet;
 
 public class Question {
-    private final String question;
-    private final String[] options;
-    private final String answer;
+    private String category;
+    private String question;
+    private String[] options;
+    private String answer;
 
-    public Question(String question, String[] options, String answer) {
+    public Question(String category, String question, String[] options, String answer) {
+        this.category = category;
         this.question = question;
         this.options = options;
         this.answer = answer;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public String getQuestion() {

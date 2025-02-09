@@ -27,15 +27,6 @@ public class GameActivity extends AppCompatActivity {
         option3 = findViewById(R.id.option3);
         option4 = findViewById(R.id.option4);
 
-        // Test question
-        currentQuestion = new Question(
-                "Vilket år grundades Lunds universitet?",
-                new String[]{"1666", "1855", "1912", "1523"},
-                "1666"
-        );
-
-        showQuestion(currentQuestion);
-
         View.OnClickListener answerClickListener = v -> checkAnswer(((Button) v).getText().toString());
         option1.setOnClickListener(answerClickListener);
         option2.setOnClickListener(answerClickListener);

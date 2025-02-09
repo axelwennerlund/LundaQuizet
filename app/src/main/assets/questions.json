@@ -1,0 +1,110 @@
+[
+  {
+    "category": "Historia",
+    "question": "Vilket år grundades staden Lund?",
+    "options": ["345", "990", "1210", "1378"],
+    "answer": "990"
+  },
+  {
+    "category": "Historia",
+    "question": "Vad heter psalmen som Lunds domkyrkas astronomiska ur spelar två gånger om dagen?",
+    "options": ["In Dulci Jubilo", "Gaudete", "Veni Creator Spiritus", "Salve Regina"],
+    "answer": "In Dulci Jubilo"
+  },
+  {
+    "category": "Historia",
+    "question": "5 km söder om Lund ligger ett av de allra tidigaste stadsliknande samhällena i Skandinavien. Vad heter det?",
+    "options": ["Uppåkra", "Birka", "Hedeby", "Foteviken"],
+    "answer": "Uppåkra"
+  },
+  {
+    "category": "Geografi",
+    "question": "Vilken av följande kommuner gränsar till Lund?",
+    "options": ["Sjöbo kommun", "Båstad kommun", "Ystad kommun", "Hässleholm kommun"],
+    "answer": "Sjöbo kommun"
+  },
+  {
+    "category": "Geografi",
+    "question": "Vilken höjd över havet ligger Lund ungefär på?",
+    "options": ["80 meter", "10 meter", "150 meter", "220 meter"],
+    "answer": "80 meter"
+  },
+  {
+    "category": "Geografi",
+    "question": "Vad heter den största sjön i Lunds kommun?",
+    "options": ["Vombsjön", "Ringsjön", "Krankesjön", "Sövdesjön"],
+    "answer": "Vombsjön"
+  },
+  {
+    "category": "Lunds Universitet",
+    "question": "Vilket år bildades InfoCom?",
+    "options": ["2005", "2007", "2001", "2003"],
+    "answer": "2001"
+  },
+  {
+    "category": "Lunds Universitet",
+    "question": "Ungefär hur många studerar vid LU?",
+    "options": ["37 000", "47 000", "57 000", "67 000"],
+    "answer": "47 000"
+  },
+  {
+    "category": "Lunds Universitet",
+    "question": "Vilken kurskod har Programmering Grundkurs?",
+    "options": ["EDAA45", "EDAA75", "MAMN01", "EITA25"],
+    "answer": "EDAA45"
+  },
+  {
+    "category": "Kända Personer",
+    "question": "Vem av följande kommer inte från Lund?",
+    "options": ["Måns Zelmerlöw", "Timbuktu", "Anita Ekberg", "David Batra"],
+    "answer": "Anita Ekberg"
+  },
+  {
+    "category": "Kända Personer",
+    "question": "Vilken känd författare bodde ett tag i Lund?",
+    "options": ["August Strindberg", "Selma Lagerlöf", "Hjalmar Söderberg", "Harry Martinson"],
+    "answer": "August Strindberg"
+  },
+  {
+    "category": "Kända Personer",
+    "question": "Vilken av dessa skådespelare är uppvuxen i Lund?",
+    "options": ["Max von Sydow", "Stellan Skarsgård", "Mikael Persbrandt", "Ingrid Bergman"],
+    "answer": "Max von Sydow"
+  },
+  {
+    "category": "Lund i Siffror",
+    "question": "Hur många bodde i Lund 2023?",
+    "options": ["123 566", "130 288", "135 027", "141 120"],
+    "answer": "130 288"
+  },
+  {
+    "category": "Lund i Siffror",
+    "question": "Vad är medelåldern på folk som bor i Lund?",
+    "options": ["26,3", "45,2", "39,3", "50,1"],
+    "answer": "39,3"
+  },
+  {
+    "category": "Lund i Siffror",
+    "question": "Hur många procent av Lunds invånare har en forskarutbildning?",
+    "options": ["5,9", "4,1", "8,2", "1,3"],
+    "answer": "5,9"
+  },
+  {
+    "category": "Blandat",
+    "question": "Vilket grundämne har den högsta smältpunkten?",
+    "options": ["Wolfram (Tungsten, W)", "Osmium", "Titan", "Rhenium"],
+    "answer": "Wolfram (Tungsten, W)"
+  },
+  {
+    "category": "Blandat",
+    "question": "Vilken nation har vunnit flest olympiska guldmedaljer i sommar-OS genom tiderna?",
+    "options": ["Kina", "USA", "Sovjetunionen", "Storbritannien"],
+    "answer": "USA"
+  },
+  {
+    "category": "Blandat",
+    "question": "Vilken artist har vunnit flest Grammy Awards genom tiderna?",
+    "options": ["Madonna", "Beyoncé", "Whitney Houston", "Adele"],
+    "answer": "Beyoncé"
+  }
+]
