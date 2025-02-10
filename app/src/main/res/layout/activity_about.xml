@@ -56,12 +56,36 @@
         android:id="@+id/textViewHowToPlay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Spelaren börjar med att skaka mobilen för att kasta tärningen. Varje siffra motsvarar en kategori som alla handlar om Lund (förutom kategorin ”Blandat” vars frågor kan handla om vad som helst):\n\n1. Historia\n2. Sport\n3. Mat\n4. Människor\n5. Djur\n6. Blandat\n\nSiffran på tärningen avgör kategorin som visas tillsammans med fyra svarsalternativ."
+        android:text="Spelaren börjar med att skaka mobilen för att kasta tärningen. Varje siffra motsvarar en kategori som alla handlar om Lund (förutom kategorin ”Blandat” vars frågor kan handla om vad som helst):\n\n1. Historia\n2. Geografi\n3. Lunds Universitet\n4. Kända Personer\n5. Lund i Siffror\n6. Blandat\n\nSiffran på tärningen avgör kategorin som visas tillsammans med fyra svarsalternativ."
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:padding="16dp"
         android:lineSpacingExtra="4dp"
         app:layout_constraintTop_toBottomOf="@id/textViewHowToPlayTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewHintTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ledtråd"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/textViewHowToPlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewHint"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Behöver man hjälp, kan man hålla ett finger framför selfiekameran - då kommer ett svarsalternativ att plockas bort."
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/textViewHintTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -73,7 +97,7 @@
         android:textColor="@android:color/black"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/textViewHowToPlay"
+        app:layout_constraintTop_toBottomOf="@id/textViewHint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
