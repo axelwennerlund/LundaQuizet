@@ -64,6 +64,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         }
 
         if (accelerometer != null) {
+            assert sensorManager != null;
             sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
         }
 
