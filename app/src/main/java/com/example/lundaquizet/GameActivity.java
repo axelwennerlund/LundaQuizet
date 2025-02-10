@@ -162,11 +162,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         };
 
         diceImage.postDelayed(() -> {
-            if (diceRoll >= 1 && diceRoll <= 6) {
-                diceImage.setImageResource(diceDrawables[diceRoll - 1]);
-            }
+            diceImage.setImageResource(diceDrawables[diceRoll - 1]);
         }, 300);
-
 
         diceResult.setText("Du slog: " + diceRoll + " (" + category + ")");
         vibrator.vibrate(200);
