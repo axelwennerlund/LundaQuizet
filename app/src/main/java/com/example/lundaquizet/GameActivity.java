@@ -38,6 +38,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private String[] categories = {"Historia", "Geografi", "Lunds Universitet", "Kända Personer", "Lund i Siffror", "Blandat"};
     private Question currentQuestion;
     private MediaPlayer diceSound;
+    private Sensor proximitySensor;
+    private boolean hintUsed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +63,15 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         if (sensorManager != null) {
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+            proximitySensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
         }
 
         if (accelerometer != null) {
-            assert sensorManager != null;
             sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_UI);
+        }
+
+        if (proximitySensor != null) {
+            sensorManager.registerListener(this, proximitySensor, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
         playButton.setOnClickListener(v -> startGame());
@@ -83,6 +89,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private void startGame() {
         isRollingEnabled = true;
+        hintUsed = false;
         playButton.setVisibility(View.GONE);
         playAgainButton.setVisibility(View.GONE);
         homeButton.setVisibility(View.GONE);
@@ -96,6 +103,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             detectShake(event);
+        } else if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
+            detectHintGesture(event);
         }
     }
 
@@ -105,6 +114,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void showQuestion(Question question) {
+
+        hintUsed = false;
+
         questionText.setText(question.getQuestion());
 
         List<String> shuffledOptions = Arrays.asList(question.getOptions());
@@ -203,6 +215,39 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         option4.setEnabled(enable);
     }
 
+    private void detectHintGesture(SensorEvent event) {
+        if (currentQuestion != null && !hintUsed) {
+            if (event.values[0] < proximitySensor.getMaximumRange()) {
+                provideHint();
+            }
+        }
+    }
+
+    private void provideHint() {
+        if (currentQuestion == null || hintUsed) return;
+
+        String[] options = currentQuestion.getOptions();
+        Random random = new Random();
+        int removedIndex = -1;
+
+        while (removedIndex == -1) {
+            int index = random.nextInt(4);
+            if (!options[index].equals(currentQuestion.getAnswer())) {
+                removedIndex = index;
+            }
+        }
+
+        switch (removedIndex) {
+            case 0: option1.setText(""); option1.setEnabled(false); break;
+            case 1: option2.setText(""); option2.setEnabled(false); break;
+            case 2: option3.setText(""); option3.setEnabled(false); break;
+            case 3: option4.setText(""); option4.setEnabled(false); break;
+        }
+
+        Toast.makeText(this, "Ledtråd använd! Ett felaktigt svar har tagits bort.", Toast.LENGTH_SHORT).show();
+        hintUsed = true;
+    }
+
     private void resetGame() {
         isRollingEnabled = true;
         playAgainButton.setVisibility(View.GONE);
@@ -210,6 +255,18 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         diceResult.setText("Skaka för att kasta tärningen!");
         questionText.setText("");
         enableAnswerButtons(false);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (sensorManager != null) {
+            sensorManager.unregisterListener(this);
+        }
+        if (diceSound != null) {
+            diceSound.release();
+            diceSound = null;
+        }
     }
 
 }
