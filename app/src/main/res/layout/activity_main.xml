@@ -81,6 +81,7 @@
             android:layout_height="60dp"
             android:layout_marginStart="4dp"
             android:backgroundTint="#5B3C90"
+            android:onClick="launchAbout"
             android:text="Om Appen"
             android:textColor="@android:color/white"
             android:textSize="16sp"
