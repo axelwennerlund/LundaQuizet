@@ -28,7 +28,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private TextView diceResult, questionText;
     private ImageView diceImage;
-    private Button playButton, playAgainButton, homeButton;
+    private Button playButton;
     private Button option1, option2, option3, option4;
     private SensorManager sensorManager;
     private Sensor accelerometer;
@@ -53,8 +53,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         questionText = findViewById(R.id.questionText);
         diceImage = findViewById(R.id.diceImage);
         playButton = findViewById(R.id.playButton);
-        playAgainButton = findViewById(R.id.playAgainButton);
-        homeButton = findViewById(R.id.homeButton);
         option1 = findViewById(R.id.option1);
         option2 = findViewById(R.id.option2);
         option3 = findViewById(R.id.option3);
@@ -79,14 +77,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
         playButton.setOnClickListener(v -> startGame());
 
-        playAgainButton.setOnClickListener(v -> resetGame());
-
-        homeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(GameActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
         diceSound = MediaPlayer.create(this, R.raw.diceroll);
         correctSound = MediaPlayer.create(this, R.raw.correct);
         errorSound = MediaPlayer.create(this, R.raw.error);
@@ -98,8 +88,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         isRollingEnabled = true;
         hintUsed = false;
         playButton.setVisibility(View.GONE);
-        playAgainButton.setVisibility(View.GONE);
-        homeButton.setVisibility(View.GONE);
         diceResult.setText("Skaka för att kasta tärningen!");
         questionText.setText("");
 
