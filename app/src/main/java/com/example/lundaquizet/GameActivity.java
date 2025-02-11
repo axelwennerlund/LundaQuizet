@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
 import java.util.Collections;
@@ -143,29 +144,34 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void checkAnswer(String selectedAnswer) {
-        if (selectedAnswer.equals(currentQuestion.getAnswer())) {
+        boolean isCorrect = selectedAnswer.equals(currentQuestion.getAnswer());
+        String message = isCorrect ? "Rätt!" : "Fel! Rätt svar är " + currentQuestion.getAnswer();
+
+        if (isCorrect) {
             if (correctSound != null) {
                 correctSound.seekTo(0);
                 correctSound.start();
             }
-            Toast.makeText(this, "Rätt!", Toast.LENGTH_SHORT).show();
         } else {
             if (errorSound != null) {
                 errorSound.seekTo(0);
                 errorSound.start();
             }
-            Toast.makeText(this, "Fel! Rätt svar är: " + currentQuestion.getAnswer(), Toast.LENGTH_SHORT).show();
         }
 
+        new AlertDialog.Builder(this)
+                .setTitle("Ditt svar: " + selectedAnswer)
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton("Spela igen", (dialog, which) -> resetGame())
+                .setNegativeButton("Hem", (dialog, which) -> {
+                    Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                })
+                .show();
+
         enableAnswerButtons(false);
-
-        LinearLayout buttonLayout = findViewById(R.id.buttonLayout);
-        Button playAgainButton = findViewById(R.id.playAgainButton);
-        Button homeButton = findViewById(R.id.homeButton);
-
-        buttonLayout.setVisibility(View.VISIBLE);
-        playAgainButton.setVisibility(View.VISIBLE);
-        homeButton.setVisibility(View.VISIBLE);
     }
 
     private void rollDice() {
@@ -259,8 +265,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private void resetGame() {
         isRollingEnabled = true;
-        playAgainButton.setVisibility(View.GONE);
-        homeButton.setVisibility(View.GONE);
         diceResult.setText("Skaka för att kasta tärningen!");
         questionText.setText("");
         enableAnswerButtons(false);
