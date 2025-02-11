@@ -199,12 +199,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         double acceleration = Math.sqrt(x * x + y * y + z * z);
         double deltaAcceleration = Math.abs(acceleration - SensorManager.GRAVITY_EARTH);
 
-        long currentTime = System.currentTimeMillis();
         if (deltaAcceleration > SHAKE_THRESHOLD) {
-            if ((currentTime - lastShakeTime) > 2000) {
-                lastShakeTime = currentTime;
-                rollDice();
-            }
+            rollDice();
         }
     }
 
