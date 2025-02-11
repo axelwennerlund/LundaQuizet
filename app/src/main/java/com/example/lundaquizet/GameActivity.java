@@ -38,6 +38,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private String[] categories = {"Historia", "Geografi", "Lunds Universitet", "Kända Personer", "Lund i Siffror", "Blandat"};
     private Question currentQuestion;
     private MediaPlayer diceSound;
+    private MediaPlayer correctSound;
+    private MediaPlayer errorSound;
     private Sensor proximitySensor;
     private boolean hintUsed = false;
 
@@ -83,6 +85,10 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             startActivity(intent);
             finish();
         });
+
+        diceSound = MediaPlayer.create(this, R.raw.diceroll);
+        correctSound = MediaPlayer.create(this, R.raw.correct);
+        errorSound = MediaPlayer.create(this, R.raw.error);
 
         isRollingEnabled = false;
     }
@@ -138,8 +144,16 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
 
     private void checkAnswer(String selectedAnswer) {
         if (selectedAnswer.equals(currentQuestion.getAnswer())) {
+            if (correctSound != null) {
+                correctSound.seekTo(0);
+                correctSound.start();
+            }
             Toast.makeText(this, "Rätt!", Toast.LENGTH_SHORT).show();
         } else {
+            if (errorSound != null) {
+                errorSound.seekTo(0);
+                errorSound.start();
+            }
             Toast.makeText(this, "Fel! Rätt svar är: " + currentQuestion.getAnswer(), Toast.LENGTH_SHORT).show();
         }
 
@@ -160,10 +174,9 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         String category = categories[diceRoll - 1];
 
         if (diceSound != null) {
-            diceSound.release();
+            diceSound.seekTo(0);
+            diceSound.start();
         }
-        diceSound = MediaPlayer.create(this, R.raw.diceroll);
-        diceSound.start();
 
         Animation rotateAnimation = AnimationUtils.loadAnimation(this, R.anim.dice_roll);
         diceImage.startAnimation(rotateAnimation);
@@ -262,6 +275,14 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if (diceSound != null) {
             diceSound.release();
             diceSound = null;
+        }
+        if (correctSound != null) {
+            correctSound.release();
+            correctSound = null;
+        }
+        if (errorSound != null) {
+            errorSound.release();
+            errorSound = null;
         }
     }
 
