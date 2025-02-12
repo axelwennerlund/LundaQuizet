@@ -41,8 +41,11 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private MediaPlayer diceSound;
     private MediaPlayer correctSound;
     private MediaPlayer errorSound;
+    private MediaPlayer swishSound;
+    private MediaPlayer popSound;
     private Sensor proximitySensor;
     private boolean hintUsed = false;
+    private boolean isFaceDown = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +83,8 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         diceSound = MediaPlayer.create(this, R.raw.diceroll);
         correctSound = MediaPlayer.create(this, R.raw.correct);
         errorSound = MediaPlayer.create(this, R.raw.error);
+        swishSound = MediaPlayer.create(this, R.raw.swishsound);
+        popSound = MediaPlayer.create(this, R.raw.pop);
 
         isRollingEnabled = false;
     }
@@ -98,6 +103,7 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             detectShake(event);
+            detectFaceDown(event);
         } else if (event.sensor.getType() == Sensor.TYPE_PROXIMITY) {
             detectHintGesture(event);
         }
@@ -219,12 +225,15 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void detectHintGesture(SensorEvent event) {
+        if (isFaceDown) return;
+
         if (currentQuestion != null && !hintUsed) {
             if (event.values[0] < proximitySensor.getMaximumRange()) {
                 provideHint();
             }
         }
     }
+
 
     private void provideHint() {
         if (currentQuestion == null || hintUsed) return;
@@ -247,14 +256,49 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
             case 3: option4.setText(""); option4.setEnabled(false); break;
         }
 
-        Toast.makeText(this, "Ledtråd använd! Ett felaktigt svar har tagits bort.", Toast.LENGTH_SHORT).show();
+        if (popSound != null) {
+            popSound.seekTo(0);
+            popSound.start();
+        }
+
         hintUsed = true;
+    }
+
+    private void detectFaceDown(SensorEvent event) {
+        float z = event.values[2];
+
+        if (z < -9.0 && !isFaceDown) {
+            isFaceDown = true;
+            switchQuestion();
+        } else if (z > -5.0 && isFaceDown) {
+            isFaceDown = false;
+        }
+    }
+
+    private void switchQuestion() {
+        if (currentQuestion != null) {
+            String category = currentQuestion.getCategory();
+            Question newQuestion = QuestionLoader.getQuestionByCategory(category);
+
+            if (newQuestion != null && !newQuestion.equals(currentQuestion)) {
+                currentQuestion = newQuestion;
+                showQuestion(newQuestion);
+                if (swishSound != null) {
+                    swishSound.seekTo(0);
+                    swishSound.start();
+                }
+            }
+        }
     }
 
     private void resetGame() {
         isRollingEnabled = true;
         diceResult.setText("Skaka för att kasta tärningen!");
         questionText.setText("");
+        option1.setText("");
+        option2.setText("");
+        option3.setText("");
+        option4.setText("");
         enableAnswerButtons(false);
     }
 
@@ -275,6 +319,14 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
         if (errorSound != null) {
             errorSound.release();
             errorSound = null;
+        }
+        if (swishSound != null) {
+            swishSound.release();
+            swishSound = null;
+        }
+        if (popSound != null) {
+            popSound.release();
+            popSound = null;
         }
     }
 
