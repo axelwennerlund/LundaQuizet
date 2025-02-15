@@ -15,12 +15,11 @@ public class AboutActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_about);
 
-        // Koppla tillbaka-knappen
         Button buttonBack = findViewById(R.id.buttonBack);
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish(); // Stänger AboutActivity och går tillbaka till föregående skärm
+                finish();
             }
         });
     }

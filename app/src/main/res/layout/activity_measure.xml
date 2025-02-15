@@ -15,22 +15,11 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:text="Mätvärden"
-        android:textSize="34sp"
+        android:textSize="26sp"
+        android:textStyle="bold"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/zvalue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:text="zvalue"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toEndOf="@+id/z_view"
-        app:layout_constraintTop_toBottomOf="@+id/yvalue" />
 
     <TextView
         android:id="@+id/x_view"
@@ -39,10 +28,11 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:text="x:"
-        android:textSize="24sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mätvärden" />
+        app:layout_constraintTop_toBottomOf="@id/mätvärden" />
 
     <TextView
         android:id="@+id/xvalue"
@@ -51,22 +41,10 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:text="xvalue"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textColor="@android:color/black"
-        app:layout_constraintStart_toEndOf="@+id/x_view"
-        app:layout_constraintTop_toBottomOf="@+id/mätvärden" />
-
-    <TextView
-        android:id="@+id/yvalue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="10dp"
-        android:text="yvalue"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toEndOf="@+id/y_view"
-        app:layout_constraintTop_toBottomOf="@+id/xvalue" />
+        app:layout_constraintStart_toEndOf="@id/x_view"
+        app:layout_constraintTop_toBottomOf="@id/mätvärden" />
 
     <TextView
         android:id="@+id/y_view"
@@ -75,10 +53,23 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:text="y:"
-        android:textSize="24sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/x_view" />
+        app:layout_constraintTop_toBottomOf="@id/x_view" />
+
+    <TextView
+        android:id="@+id/yvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:text="yvalue"
+        android:textSize="22sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toEndOf="@id/y_view"
+        app:layout_constraintTop_toBottomOf="@id/xvalue" />
 
     <TextView
         android:id="@+id/z_view"
@@ -87,9 +78,35 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="10dp"
         android:text="z:"
-        android:textSize="24sp"
+        android:textSize="22sp"
+        android:textStyle="bold"
         android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/y_view" />
+        app:layout_constraintTop_toBottomOf="@id/y_view" />
+
+    <TextView
+        android:id="@+id/zvalue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:text="zvalue"
+        android:textSize="22sp"
+        android:textColor="@android:color/black"
+        app:layout_constraintStart_toEndOf="@id/z_view"
+        app:layout_constraintTop_toBottomOf="@id/yvalue" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#5B3C90"
+        android:text="Tillbaka"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
