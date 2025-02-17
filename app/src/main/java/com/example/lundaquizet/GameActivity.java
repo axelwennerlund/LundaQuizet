@@ -14,9 +14,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Arrays;
@@ -33,7 +32,6 @@ public class GameActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sensorManager;
     private Sensor accelerometer;
     private Vibrator vibrator;
-    private long lastShakeTime = 0;
     private boolean isRollingEnabled = false;
     private static final int SHAKE_THRESHOLD = 10;
     private String[] categories = {"Historia", "Geografi", "Lunds Universitet", "Kända Personer", "Lund i Siffror", "Blandat"};

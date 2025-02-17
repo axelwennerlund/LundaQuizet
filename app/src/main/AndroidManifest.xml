@@ -19,7 +19,8 @@
             android:exported="false" />
         <activity
             android:name=".GameActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MeasureActivity"
             android:exported="false" />
