@@ -92,8 +92,8 @@
   {
     "category": "Blandat",
     "question": "Vilket grundämne har den högsta smältpunkten?",
-    "options": ["Wolfram (Tungsten, W)", "Osmium", "Titan", "Rhenium"],
-    "answer": "Wolfram (Tungsten, W)"
+    "options": ["Volfram", "Osmium", "Titan", "Rhenium"],
+    "answer": "Volfram"
   },
   {
     "category": "Blandat",
